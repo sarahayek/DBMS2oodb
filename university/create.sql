@@ -1,5 +1,5 @@
 --campus
-create object Campus_T;
+create  Campus_T as object();
 
 --professor: object, varray 5
 
