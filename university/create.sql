@@ -23,6 +23,7 @@ create or replace campus_t  as object();
 --lab
 
 --degree
+
 CREATE OR REPLACE TYPE Degree_T AS OBJECT(
   deg_ID VARCHAR2(20),
   deg_name VARCHAR2(30),
