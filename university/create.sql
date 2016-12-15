@@ -1,5 +1,5 @@
 --campus
-create or replace campus_t  as object();
+create or replace type campus_t  as object();
 --professor: object, varray 5
 
 --units: varray 5 varchar2
