@@ -1,0 +1,40 @@
+create or replace type Admin_t under staff_T (
+tittle varchar2(10) , Comp_skills varchar2(10), Office_skills varchr2(10));
+/
+
+create or replace type Lecture_t under Staff_T (
+area varchr2(10) , type varchar2(10) , Member procedure Show_lecture)
+/
+
+create or replace procedure Show_lecture(
+New_Id lecture_t.id%type) AS 
+New_area lecture_t.area%type;
+New_type lecture_t.type%type;
+Begin
+select area,type
+INTO new_area,new_type
+from Lecture_t
+where Id=new Id ;
+DBMS_Output.put_line(new_area||' '|| new_type);
+END Show_lecture;
+/
+
+create or replace procedure Delete_Admin(
+delete_Id Admin.Id%type ,
+delete_title Admin.title%type,
+delete_Comp_skills Admin.Comp_skills%type,
+delete_Office_skills Admin.Office_skills%type)AS
+Begin
+delete from Admin 
+where Id = delete_Id
+AND tittle = delete_tittle ,
+AND Comp_skills = delete_Comp_skills ,
+AND Office_skills = delete Office_skills ,
+Exception 
+where No_Data found then 
+DBMS_OutPut.put_line('Admin do not exist');
+END delete_Admin;
+/
+
+insert INTO Admin (Id,tittle,Comp_skills,Office_skills) value (new_Id,
+new_tittle,new_Comp_skills,new_Office_skills);
