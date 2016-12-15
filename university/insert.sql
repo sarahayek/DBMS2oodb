@@ -11,10 +11,11 @@
 --building
 
 --office
-
-insert into office values ('Felix' , 'BG207','94791118');
-insert into office values ('Harry' , 'BS208','94792393');
-
+begin
+insert into office values ('Grant' , 'BG207','94791118');
+insert into office values ('Xin' , 'BS208','94792393');
+end;
+/
 --classroom
 
 --lab
