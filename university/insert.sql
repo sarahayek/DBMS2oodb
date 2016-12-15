@@ -10,7 +10,10 @@
 
 --building
 
---office 
+--office
+
+insert into office values ('Felix' , 'BG207','94791118');
+insert into office values ('Harry' , 'BS208','94792393');
 
 --classroom
 
