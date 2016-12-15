@@ -18,6 +18,20 @@ create or replace campus_t  as object();
 
 --office 
 
+create or replace type office_T as object
+(bld_id varchar2(10),
+off_no varchar2(10),
+off_phone varchar2(12),
+member procedure show_office)
+/
+create table office of office_T
+(bld_id not null,
+off_no not null,
+primary key(bld_id, off_no),
+foreign key(bld_id) references
+build(bld_id))
+cluster build_cluster(bld_id);
+
 --classroom
 
 --lab
@@ -118,6 +132,30 @@ END;
 --enrolls_in
 
 --BODY OF OFFICE -SONDOS
+
+create or replace type body office_T as
+member procedure show_office is
+cursor c_office is
+select s.pers_fname, b.off_no, b.off_phone
+from person p, build b, office o, staff s
+where b.bld_id = self.bld_id and b.bld_id =
+o.bld_id
+and p.pers_id = s.pers_id and s.in_office = ref
+(o);
+begin
+dbms_output.put_line
+(‘name’||’ ‘||’office no’||’ ‘||‘office
+phone’);
+
+for v_office in c_office loop
+dbms_output.put_line
+(v_office.pers_name||’ ‘||
+v_office.off_no||’ ‘||
+v_office.off_phone);
+end loop;
+end show_office;
+end;
+/
 
 --subject
 
